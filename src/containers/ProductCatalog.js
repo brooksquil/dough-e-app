@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ProductItem from '../components/ProductItem';
+import { Link } from 'react-router-dom';
+
 class ProductCatalog extends Component {
   constructor(){
-    super();
-    this.state= {
-      products: []
+      super();
+      this.state= {
+        products: []
+      }
     }
-  }
 
   componentWillMount(){
     this.getProducts()
@@ -19,17 +22,16 @@ class ProductCatalog extends Component {
         // console.log(this.state);
       })
     })
+    .catch(err => console.log(err))
   }
 
 
     render() {
       const productItems = this.state.products.map((product, i) => {
         return(
-          <div>
-          <li>{product.name}</li>
-          <li>{product.description}</li>
-          <li>{product.price}</li>
-          </div>
+         
+          <ProductItem key={product.id} item={product}/>
+        
         )
       })
 
@@ -40,7 +42,9 @@ class ProductCatalog extends Component {
             <ul>
               {productItems}
             </ul>
-            
+            <div>
+            <Link to={`/newproduct`}>Add Product</Link>
+            </div>
         </div>
         </div>
       ); 
