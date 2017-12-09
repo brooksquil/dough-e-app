@@ -27,7 +27,15 @@ class AdminProductDetail extends Component{
         .catch(err => console.log(err))
     }
 
-    render(){
+    onDelete(){
+        let productId = this.props.match.params.id;
+        axios.delete(`http://localhost:3001/products/${productId}`)
+        .then(resolve => {
+            this.props.history.push('/products')
+        }).catch(err => console.log(err))
+    }
+
+    render(){ 
         return(
             <div>
                 <br />
@@ -38,7 +46,7 @@ class AdminProductDetail extends Component{
                <li>Price: {this.state.details.price}</li>
                </ul>
                 <Link to={`/product/edit/${this.state.details.id}`}>Edit Product</Link>
-                <Button>Delete Product</Button>
+                <Button onClick={this.onDelete.bind(this)}>Delete Product</Button>
 
             </div>
         )
