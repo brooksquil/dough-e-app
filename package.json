@@ -10,7 +10,6 @@
         "eslint-plugin-flowtype": "^2.29.1",
         "eslint-plugin-jsx-a11y": "^3.0.2",
         "eslint-plugin-react": "^6.8.0",
-        "react-router-dom": "^4.2.2",
         "react-scripts": "0.6.1",
         "stylus": "0.54.5"
     },
@@ -25,6 +24,7 @@
         "react-axios": "^2.0.0",
         "react-bootstrap": "^0.31.5",
         "react-dom": "15.3.2",
+        "react-dropzone": "^4.2.3",
         "react-router": "4.0.0-alpha.4",
         "react-router-bootstrap": "^0.24.4",
         "react-router-dom": "^4.2.2"

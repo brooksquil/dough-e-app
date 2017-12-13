@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
-class ProductDetail extends Component{
+class OrderDetail extends Component{
     constructor(props){
         super(props);
         this.state = {
@@ -12,13 +12,13 @@ class ProductDetail extends Component{
     }
 
     componentWillMount(){
-        this.getSingleProduct();
+        this.getSingleOrder();
     }
 
-    getSingleProduct(){
-        let productID = this.props.match.params.id;
+    getSingleOrder(){
+        let orderID = this.props.match.params.id;
         console.log(this.props.match.params);
-        axios.get(`http://localhost:3001/products/${productID}`)
+        axios.get(`http://localhost:3001/orders/${orderID}`)
         .then(response=> {
           this.setState({details: response.data}, () => {
             console.log(this.state);
@@ -28,10 +28,10 @@ class ProductDetail extends Component{
     }
 
     onDelete(){
-        let productId = this.props.match.params.id;
-        axios.delete(`http://localhost:3001/products/${productId}`)
+        let orderId = this.props.match.params.id;
+        axios.delete(`http://localhost:3001/orders/${orderId}`)
         .then(resolve => {
-            this.props.history.push('/products')
+            this.props.history.push('/orders')
         }).catch(err => console.log(err))
     }
 
@@ -39,18 +39,18 @@ class ProductDetail extends Component{
         return(
             <div>
                 <br />
-                <Link to='/products'>Back</Link>
+                <Link to='/orders'>Back</Link>
                <h1>{this.state.details.name}</h1>
                <ul>
-               <li>Description: {this.state.details.description}</li>
-               <li>Price: {this.state.details.price}</li>
+               <li>Delivery Date: {this.state.details.delivery_date}</li>
+               {/* <li>Price: {this.state.details.price}</li> */}
                </ul>
-                <Link to={`/product/edit/${this.state.details.id}`}>Edit Product</Link>
-                <Button onClick={this.onDelete.bind(this)}>Delete Product</Button>
+                <Link to={`/order/edit/${this.state.details.id}`}>Edit Order</Link>
+                <Button onClick={this.onDelete.bind(this)}>Delete Order</Button>
 
             </div>
         )
     }
 }
 
-export default ProductDetail;
+export default OrderDetail;

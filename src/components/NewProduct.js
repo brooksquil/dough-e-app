@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 // import { Button } from 'react-bootstrap';
 
-class AdminNewProduct extends Component{
+class NewProduct extends Component{
 
     addProduct(newProduct){
         axios.request({
@@ -43,7 +43,11 @@ class AdminNewProduct extends Component{
                     </div>
                     <div className="input-field">
                         <input type="text" name="price" ref="price" />
-                        <label htmlFor="description">Price</label>
+                        <label htmlFor="price">Price</label>
+                    </div>
+                    <div className="input-field">
+                        <input type="image" name="avatar" ref="avatar" />
+                        <label htmlFor="avatar">Upload Images</label>
                     </div>
                     <input type="submit" value="Save" className="btn" />
                 </form>
@@ -52,4 +56,4 @@ class AdminNewProduct extends Component{
     }
 }
 
-export default AdminNewProduct;
+export default NewProduct;
